@@ -1,4 +1,4 @@
-#include <pcap.h> // 필요한 헤더파일 include
+#include <pcap.h> 
 #include <stdio.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
@@ -6,7 +6,7 @@
 
 // Ethernet header – 이더넷의 구조를 나타내는 구조체 선언
 struct ethheader {
-    u_char ether_dhost[6]; // unsinged_char ether_dhost[6]과 동일한 문장
+    u_char ether_dhost[6]; // unsinged_char ether_dhost[6]
     u_char ether_shost[6];
     u_short ether_type;
 };
@@ -25,7 +25,7 @@ struct ipheader {
     struct in_addr iph_destip;
 };
 
-/* TCP Header */
+// TCP Header 
 struct tcpheader {
     u_short tcp_sport;
     u_short tcp_dport;
@@ -87,7 +87,6 @@ int main() {
     char filter_exp[] = "tcp";
     bpf_u_int32 net = 0;
 
-    // 인터페이스 이름을 실제 시스템에 맞게 수정
     const char *dev = "enp0s3";
 
     handle = pcap_open_live(dev, BUFSIZ, 1, 1000, errbuf);
